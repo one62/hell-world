@@ -13,7 +13,10 @@ struct Cut {
 };
 
 long long ccw(Point p1, Point p2, Point p3) {
-	return (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
+	if ((p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y) > 0) return 1;
+	if ((p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y) < 0) return -1;
+	else return 0;
+	//그냥 리턴 바로 하면 오버플로우남
 }
 
 bool isCross(Cut c1, Cut c2) {
@@ -24,8 +27,8 @@ bool isCross(Cut c1, Cut c2) {
 		return false;
 }
 
-bool wlCmp(Cut c1, Cut c2) {
-	return c1.w < c2.w;
+bool wlCmp(Cut c1, Cut c2) {//가중치 오름차순
+	return c1.w < c2.w;	
 }
 
 int main() {
