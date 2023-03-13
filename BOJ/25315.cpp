@@ -3,16 +3,16 @@
 using namespace std;
 
 struct Point {
-	int x;
-	int y;
+	long long x;
+	long long y;
 };
 struct Cut {
 	Point s;
 	Point e;
-	int w;
+	long long w;
 };
 
-int ccw(Point p1, Point p2, Point p3) {
+long long ccw(Point p1, Point p2, Point p3) {
 	return (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
 }
 
@@ -36,7 +36,7 @@ int main() {
 	//입력 받기 끝
 	//서로 교차하면 가중치 작은 거부터 먼저
 	sort(cut, cut + n, wlCmp);
-	int ans = 0;
+	long long ans = 0;
 	for (int i = 0; i < n; i++)
 	{
 		int count = 0;
