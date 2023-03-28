@@ -12,4 +12,5 @@ int main()
 	{
 		printf("%x", ptr[i]); // 1 바이트씩 순서대로 그 값을 출력함.
 	}
+	//Big endian에서는 12345678, Little endian에서는 78563412
 }
