@@ -16,8 +16,10 @@ int main() {
 	double a = credit[0], b = credit[1];
 	for (int i = 0; i < C; i++)
 	{
-		a = a + (double)J * a / (a + b);
-		b = b + (double)J * b / (a + b);
+		double t = a + b;
+		a = a + J * a / t;
+		b = b + J * b / t;
 	}
+	cout.precision(16);
 	cout << a;
 }
