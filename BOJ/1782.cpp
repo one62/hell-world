@@ -18,6 +18,7 @@ int main() {
 	+ 가운데엔 018
 	맨 앞, 뒤엔 0 안 됨
 	*/
+
 	string strA = to_string(a);
 	string strB = to_string(b);
 	int count = 0;
