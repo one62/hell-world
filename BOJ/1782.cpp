@@ -1,45 +1,49 @@
-//백준 1782번: 거울 숫자
+// 백준 1782 거울 숫자 (난이도 P5)
+
 #include <iostream>
-#include <cmath>
+#include <stack>
 using namespace std;
 
-//l과 r 사이의 거울 숫자 개수를 리턴하는 함수. l과 r은 같은 자릿수.
-int f(long long l, long long r) {
-	
-}
-
-int main() {
+int main () {
+	/* 0, 1, 8은 서로 대칭. 2, 5는 서로 반대.
+	두 수 사이(포함)의 거울 숫자의 개수 출력.*/
 	long long a, b;
 	cin >> a >> b;
-	/*
-	반만 검사하면 된다
-	짝수 자릿수면 그 절반만큼의 자릿수에 01258 아무거나
-	홀수 자릿수면 그 절반만큼의 자릿수에 01258 아무거나
-	+ 가운데엔 018
-	맨 앞, 뒤엔 0 안 됨
-	*/
 
-	string strA = to_string(a);
-	string strB = to_string(b);
 	int count = 0;
-	if (strA.length() != strB.length()) {
-		count += f(a, pow(10, strA.length()) - 1);
-		count += f(pow(10, strB.length() - 1), b);
-	}
-	else {
-		count += f(a, b);
-	}
-	for (int i = strA.length() + 1; i < strB.length(); i++)
+
+	for (long long i = a; i <= b; i++)
 	{
-		int t = 4;
-		for (int j = 1; j < i / 2; j++)
+		long long t = i;
+		stack<long long> stack;
+		while (t)
 		{
-			t *= 5;
+			stack.push(t % 10);
+			t /= 10;
 		}
-		if (i % 2 != 0) {
-			t *= 3;
+		t = i;
+		while (t)
+		{
+			long long top = stack.top();
+			if (top == 0 || top == 1 || top == 8) {
+				if (top == t % 10) {
+					stack.pop();
+					t /= 10;
+				} else break;
+			} else if (top == 2) {
+				if (5 == t % 10) {
+					stack.pop();
+					t /= 10;
+				} else break;
+			} else if (top == 5) {
+				if (2 == t % 10) {
+					stack.pop();
+					t /= 10;
+				} else break;
+			} else break;
 		}
-		count += t;
+		if (stack.empty()) count++;
 	}
+
 	cout << count;
 }
