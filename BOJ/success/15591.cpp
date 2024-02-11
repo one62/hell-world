@@ -47,7 +47,7 @@ int bfs(int k, int v, vector<vector<edge>> graph)
 	bool visit[5001] = {};
 	queue<int> queue;
 	queue.push(v);
-	// visit[v] = true;
+	visit[v] = true;
 
 	while(!queue.empty())
 	{
