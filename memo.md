@@ -4,5 +4,7 @@ git clean : untracked 파일 삭제
 	-x : gitignore도
 	-f : 강제(필수)
 	-i : 대화형
+	git clean -Xf
+	git clean -Xi
 
 파일명 변경 : F2
